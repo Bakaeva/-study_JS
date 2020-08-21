@@ -26,12 +26,11 @@ function showTypeOf(data) {
 }
 
 function getStatusIncome(inc) {
-  return budgetDay > 1200 ? 'У вас высокий уровень дохода' :
-    budgetDay === 1200 ? 'Ваш уровень дохода между высоким и средним' :
-    budgetDay > 600 ? 'У вас средний уровень дохода' :
-    budgetDay === 600 ? 'Ваш уровень дохода между средним и низким' :
-    budgetDay > 0 ? 'К сожалению, у вас уровень дохода ниже среднего' :
-    budgetDay === 0 ? 'Странно, что Вы ещё живы' :
+  return inc > 1200 ? 'У вас высокий уровень дохода' :
+    inc > 600 ? 'У вас средний уровень дохода' :
+    inc === 600 ? 'Ваш уровень дохода между средним и низким' :
+    inc > 0 ? 'К сожалению, у вас уровень дохода ниже среднего' :
+    inc === 0 ? 'Странно, что Вы ещё живы' :
     'Что-то пошло не так';
 }
 //#endregion Functions declaration
@@ -39,15 +38,12 @@ function getStatusIncome(inc) {
 let money = parseInt(prompt('Ваш месячный доход ?'));
 if (Number.isNaN(money))
   money = 0;
-//console.log('typeof money: ' + typeof money);
 showTypeOf(money);
 
 let income = 'фриланс';
-//console.log('typeof income: ' + typeof income);
 showTypeOf(income);
 
 let deposit = confirm('Есть ли у вас депозит в банке?');
-//console.log('typeof deposit: ' + typeof deposit);
 showTypeOf(deposit);
 
 let expensesMonth = getExpensesMonth();
@@ -71,4 +67,4 @@ console.log('Цель - ' + mission + ' рублей - будет достигн
 let budgetDay = accumulatedMonth / 30;
 console.log('Бюджет на день: ' + budgetDay + ' ~ ' + Math.floor(budgetDay));
 
-console.log(getStatusIncome(income));
+console.log(getStatusIncome(budgetDay));
